@@ -44,7 +44,7 @@ namespace PruebasCliente
             }
             while (existe); // Si existe, genera otro ID
 
-            Console.WriteLine($"✅ ID único generado: {nuevoID} (después de {intentos} intentos)");
+            Console.WriteLine($" ID único generado: {nuevoID} (después de {intentos} intentos)");
             return nuevoID;
         }
 
@@ -78,7 +78,7 @@ namespace PruebasCliente
                     City = "CiudadTest",
                     Country = "PaisTest",
                     Phone = "987654321",
-                    Fax = "123456789"
+                    Fax = "123456789" 
                 };
 
                 // Act
@@ -89,7 +89,7 @@ namespace PruebasCliente
                     .FirstOrDefault(c => c.CustomerID == customerID);
 
                 Assert.IsNotNull(clienteAgregado, "El cliente debería existir");
-                Console.WriteLine($"✅ Cliente {customerID} insertado correctamente");
+                Console.WriteLine($" Cliente {customerID} insertado correctamente");
             }
             catch (Exception ex)
             {
@@ -131,7 +131,7 @@ namespace PruebasCliente
             }
         }
 
-        // 🔹 PRUEBA 4: INSERTAR CLIENTE CON ID REPETIDO
+        //  INSERTAR CLIENTE CON ID REPETIDO
         [TestMethod]
         public void Insertar_ClienteConIDRepetido_RegresaFalse()
         {
@@ -168,7 +168,7 @@ namespace PruebasCliente
             }
         }
 
-        // PRUEBA 5: CARGAR CLIENTE EXISTENTE
+        //  CARGAR CLIENTE EXISTENTE
         [TestMethod]
         public void Cargar_ClienteExistente_RegresaTrue()
         {
@@ -189,7 +189,7 @@ namespace PruebasCliente
             Console.WriteLine($" Cliente {customerID} encontrado");
         }
 
-        // PRUEBA 6: CARGAR CLIENTE INEXISTENTE
+        //  CARGAR CLIENTE INEXISTENTE
         [TestMethod]
         public void Cargar_ClienteInexistente_RegresaFalse()
         {
@@ -201,7 +201,7 @@ namespace PruebasCliente
             Console.WriteLine(" Cliente inexistente verificado correctamente");
         }
 
-        // PRUEBA 7: ACTUALIZAR CLIENTE EXISTENTE
+        //ACTUALIZAR CLIENTE EXISTENTE
         [TestMethod]
         public void Actualizar_ClienteExistente_RegresaTrue()
         {
@@ -247,7 +247,7 @@ namespace PruebasCliente
             }
         }
 
-        // PRUEBA 8: ACTUALIZAR CLIENTE INEXISTENTE
+        // ACTUALIZAR CLIENTE INEXISTENTE
         [TestMethod]
         public void Actualizar_ClienteInexistente_RegresaFalse()
         {
@@ -275,7 +275,7 @@ namespace PruebasCliente
             }
         }
 
-        // 🔹 PRUEBA 9: ELIMINAR CLIENTE EXISTENTE
+        //  ELIMINAR CLIENTE EXISTENTE
         [TestMethod]
         public void Eliminar_ClienteExistente_RegresaTrue()
         {
@@ -299,10 +299,10 @@ namespace PruebasCliente
             // Assert
             var existe = _management.VerificarCliente(customerID);
             Assert.IsFalse(existe, "El cliente debería haber sido eliminado");
-            Console.WriteLine($"✅ Cliente {customerID} eliminado correctamente");
+            Console.WriteLine($" Cliente {customerID} eliminado correctamente");
         }
 
-        // 🔹 PRUEBA 10: ELIMINAR CLIENTE INEXISTENTE
+        // ELIMINAR CLIENTE INEXISTENTE
         [TestMethod]
         public void Eliminar_ClienteInexistente_RegresaFalse()
         {
