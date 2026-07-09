@@ -12,7 +12,7 @@ namespace ClienteNegocio.Management
         public List<ClienteDTO> ObtenerCliente()
         {
             // Obtener los Customers desde el Repository (Northwind)
-            List<Northwind> clientesDatos = new ClientesDatos.Repositories.ClienteRepository().ObtenerClientes();
+            List<Customers> clientesDatos = new ClientesDatos.Repositories.ClienteRepository().ObtenerClientes();
             List<ClienteDTO> listadoRetorno = new List<ClienteDTO>();
 
             foreach (var item in clientesDatos)
@@ -41,8 +41,8 @@ namespace ClienteNegocio.Management
         {
             if (cliente == null) return;
 
-            
-            Northwind clienteDB = new Northwind();
+
+            Customers clienteDB = new Customers();
             clienteDB.CustomerID = cliente.CustomerID;   
             clienteDB.CompanyName = cliente.CompanyName;
             clienteDB.ContactName = cliente.ContactName;
@@ -64,7 +64,7 @@ namespace ClienteNegocio.Management
             if (clienteMod == null) return;
 
             // Convierte los DTOs a Customers (Northwind)
-            Northwind clienteDB = new Northwind();
+            Customers clienteDB = new Customers();
             clienteDB.CustomerID = clienteMod.CustomerID;
             clienteDB.CompanyName = clienteMod.CompanyName;
             clienteDB.ContactName = clienteMod.ContactName;

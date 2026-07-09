@@ -12,7 +12,7 @@ namespace ClientesDatos.Infraestructura
     using System;
     using System.Collections.Generic;
     
-    public partial class Northwind
+    public partial class Customers
     {
         public string CustomerID { get; set; }
         public string CompanyName { get; set; }

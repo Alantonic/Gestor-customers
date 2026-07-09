@@ -13,10 +13,10 @@ namespace ClientesDatos.Infraestructura
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CustomersEntities1 : DbContext
+    public partial class NorthwindEntities : DbContext
     {
-        public CustomersEntities1()
-            : base("name=CustomersEntities1")
+        public NorthwindEntities()
+            : base("name=NorthwindEntities")
         {
         }
     
@@ -24,6 +24,7 @@ namespace ClientesDatos.Infraestructura
         {
             throw new UnintentionalCodeFirstException();
         }
-        public virtual DbSet<Northwind> Northwind { get; set; }
+    
+        public virtual DbSet<Customers> Customers { get; set; }
     }
 }
