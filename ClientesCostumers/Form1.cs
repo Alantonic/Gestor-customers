@@ -50,16 +50,43 @@ namespace ClientesCostumers
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ClienteNegocio.DTOs.ClienteDTO ClienteSeleccionado = dataGridView1.CurrentRow.DataBoundItem as ClienteNegocio.DTOs.ClienteDTO;
-            AltaCliente altaCliente = new AltaCliente();
-            altaCliente.ShowDialog();
-            dataGridView1.DataSource = new ClienteNegocio.Management.ClienteManagement().ObtenerCliente();
-            
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                ClienteDTO clienteSeleccionado = dataGridView1.CurrentRow.DataBoundItem as ClienteDTO;
+
+                if (clienteSeleccionado != null)
+                {
+                    AltaCliente ventana = new AltaCliente(clienteSeleccionado);
+                    if (ventana.ShowDialog() == DialogResult.OK)
+                    {
+                        dataGridView1.DataSource = new ClienteManagement().ObtenerCliente();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un cliente para modificar", "Aviso");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void btnCargarClientes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var clientes = new ClienteManagement().ObtenerCliente();
+                dataGridView1.DataSource = clientes;
+                MessageBox.Show($"Clientes cargados: {clientes.Count} registros", "Éxito");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar: {ex.Message}", "Error");
+            }
+        }
     }
 }
+

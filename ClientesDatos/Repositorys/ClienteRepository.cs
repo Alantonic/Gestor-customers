@@ -8,7 +8,7 @@ namespace ClientesDatos.Repositories
 {
     public class ClienteRepository
     {
-        // 🔹 OBTENER TODOS LOS CLIENTES
+        // OBTENER TODOS LOS CLIENTES
         public List<Customers> ObtenerClientes()
         {
             List<Customers> listadoretorno = new List<Customers>();
@@ -26,7 +26,7 @@ namespace ClientesDatos.Repositories
             }
         }
 
-        // 🔹 OBTENER CLIENTE POR ID
+        // OBTENER CLIENTE POR ID
         public Customers ObtenerClientePorId(string customerId)
         {
             try
@@ -42,7 +42,7 @@ namespace ClientesDatos.Repositories
             }
         }
 
-        // 🔹 ALTA DE CLIENTE
+        // ALTA DE CLIENTE
         public void AltaCliente(Customers cliente)
         {
             using (var context = new NorthwindEntities())
@@ -52,7 +52,7 @@ namespace ClientesDatos.Repositories
             }
         }
 
-        // 🔹 MODIFICAR CLIENTE
+        // MODIFICAR CLIENTE
         public void ModificarCliente(Customers clienteMod)
         {
             try
@@ -86,7 +86,7 @@ namespace ClientesDatos.Repositories
             }
         }
 
-        // 🔹 ELIMINAR CLIENTE
+        // ELIMINAR CLIENTE
         public void EliminarCliente(string customerId)
         {
             try
@@ -109,22 +109,22 @@ namespace ClientesDatos.Repositories
             }
         }
 
-        // 🔹 VERIFICAR CLIENTE EXISTENTE
+        //  VERIFICAR CLIENTE EXISTENTE
         public bool VerificarClienteExistente(string customerId)
         {
             using (var context = new NorthwindEntities())
             {
-                // 🔹 SIEMPRE "Customers" (LA TABLA DONDE GUARDAS)
+                //  SIEMPRE "Customers" (LA TABLA DONDE GUARDAS)
                 return context.Customers.Any(c => c.CustomerID == customerId);
             }
         }
 
-        // 🔹 VERIFICAR CLIENTE POR NOMBRE
+        //  VERIFICAR CLIENTE POR NOMBRE
         public bool VerificarClientePorNombre(string companyName)
         {
             using (var context = new NorthwindEntities())
             {
-                // 🔹 SIEMPRE "Customers" (LA TABLA DONDE GUARDAS)
+                // SIEMPRE "Customers" (LA TABLA DONDE GUARDAS)
                 return context.Customers.Any(c => c.CompanyName == companyName);
             }
         }
