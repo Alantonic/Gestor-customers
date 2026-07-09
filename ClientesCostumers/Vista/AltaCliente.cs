@@ -33,44 +33,53 @@ namespace ClientesCostumers.Vista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (clienteMod != null)
+            try
             {
-                // Cargar datos del cliente en los campos
-                txtCustomerID.Text = clienteMod.CustomerID;
-                txtContactCustomerID.Enabled = false; 
-                txtCompanyName.Text = clienteMod.CompanyName;
-                txtContactName.Text = clienteMod.ContactName;
-                txtContactTitle.Text = clienteMod.ContactTitle;
-                txtAddress.Text = clienteMod.Address;
-                txtCity.Text = clienteMod.City;
-                txtRegion.Text = clienteMod.Region;
-                txtPostalCode.Text = clienteMod.PostalCode;
-                txtCountry.Text = clienteMod.Country;
-                txtPhone.Text = clienteMod.Phone;
-                txtFax.Text = clienteMod.Fax;
-            }
-            else
-            {
-                // Es ALTA
-                ClienteDTO nuevoCliente = new ClienteDTO();
-                nuevoCliente.CustomerID = txtCustomerID.Text.ToUpper();
-                nuevoCliente.CompanyName = txtCompanyName.Text;
-                nuevoCliente.ContactName = txtContactName.Text;
-                nuevoCliente.ContactTitle = txtContactTitle.Text;
-                nuevoCliente.Address = txtAddress.Text;
-                nuevoCliente.City = txtCity.Text;
-                nuevoCliente.Region = txtRegion.Text;
-                nuevoCliente.PostalCode = txtPostalCode.Text;
-                nuevoCliente.Country = txtCountry.Text;
-                nuevoCliente.Phone = txtPhone.Text;
-                nuevoCliente.Fax = txtFax.Text;
+                if (clienteMod != null) 
+                {
+                    
+                    clienteMod.CompanyName = txtCompanyName.Text;
+                    clienteMod.ContactName = txtContactName.Text;
+                    clienteMod.ContactTitle = txtContactTitle.Text;
+                    clienteMod.Address = txtAddress.Text;
+                    clienteMod.City = txtCity.Text;
+                    clienteMod.Region = txtRegion.Text;
+                    clienteMod.PostalCode = txtPostalCode.Text;
+                    clienteMod.Country = txtCountry.Text;
+                    clienteMod.Phone = txtPhone.Text;
+                    clienteMod.Fax = txtFax.Text;
 
-                management.AltaCliente(nuevoCliente);
-                MessageBox.Show("Cliente agregado correctamente", "Éxito");
+                 
+                    management.ModificarCliente(clienteMod);
+
+                    MessageBox.Show("Cliente modificado correctamente", "Éxito");
+                }
+                else //  ES ALTA
+                {
+                    ClienteDTO nuevoCliente = new ClienteDTO();
+                    nuevoCliente.CustomerID = txtCustomerID.Text.ToUpper();
+                    nuevoCliente.CompanyName = txtCompanyName.Text;
+                    nuevoCliente.ContactName = txtContactName.Text;
+                    nuevoCliente.ContactTitle = txtContactTitle.Text;
+                    nuevoCliente.Address = txtAddress.Text;
+                    nuevoCliente.City = txtCity.Text;
+                    nuevoCliente.Region = txtRegion.Text;
+                    nuevoCliente.PostalCode = txtPostalCode.Text;
+                    nuevoCliente.Country = txtCountry.Text;
+                    nuevoCliente.Phone = txtPhone.Text;
+                    nuevoCliente.Fax = txtFax.Text;
+
+                    management.AltaCliente(nuevoCliente);
+                    MessageBox.Show("Cliente agregado correctamente", "Éxito");
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            //cierra el interfaz de formulario
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al guardar: {ex.Message}", "Error");
+            }
         }
 
 
